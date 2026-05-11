@@ -33,25 +33,26 @@ export function SideDrawer({
           </DrawerHeader>
           <hr className="border-b-2 border-gray-100 " />
           {children}
-          <hr className="border-b-2 border-gray-200" />
 
-          <DrawerFooter className="p-5">
-            <button
-              onClick={HandleSubmit}
-              type="submit"
-              className="bg-blue-900 text-white text-lg font-bold w-full p-2.5 rounded hover:bg-blue-950 hover:outline hover:outline-blue-950 hover:text-white   transition-all duration-500"
-            >
-              {Action}
-            </button>
-            <DrawerClose asChild>
+          <div className="absolute bottom-0 left-0 right-0">
+            <DrawerFooter className="p-5">
               <button
-                onClick={() => reset()}
-                className="bg-white outline outline-blue-900 text-blue-900 text-lg font-bold w-full p-2.5 rounded"
+                onClick={HandleSubmit}
+                type="submit"
+                className="bg-blue-900 text-white text-lg font-bold w-full p-2.5 rounded hover:bg-blue-950 hover:outline hover:outline-blue-950 hover:text-white   transition-all duration-500"
               >
-                Cancel
+                {Action}
               </button>
-            </DrawerClose>
-          </DrawerFooter>
+              <DrawerClose asChild>
+                <button
+                  onClick={() => reset()}
+                  className="bg-white outline outline-blue-900 text-blue-900 text-lg font-bold w-full p-2.5 rounded"
+                >
+                  Cancel
+                </button>
+              </DrawerClose>
+            </DrawerFooter>
+          </div>
         </DrawerContent>
       </Drawer>
     </div>

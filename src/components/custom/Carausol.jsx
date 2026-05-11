@@ -6,16 +6,15 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "../ui/carousel";
-// import { images } from "@/Data/staticData";
-// import { useNavigate } from "react-router-dom";
+import { useRef } from "react";
+import { useEffect } from "react";
 
-export function CarausolImg({images}) {
-  // const navigate =useNavigate();
-  const nextButton = React.useRef(null);
+export function CarausolImg({ images }) {
+  const nextButton = useRef(null);
   //Ref is for imperative things (DOM, timers, buttons, inputs)
   // example: A box where React stores something The box never changes identity, only the value inside it changes
 
-  React.useEffect(() => {
+  useEffect(() => {
     const interval = setInterval(() => {
       if (nextButton.current) {
         //The button is not rendered yet

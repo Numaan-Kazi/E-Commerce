@@ -20,6 +20,7 @@ import { LoginPage } from "@/Pages/LoginPage";
 import { BiLogIn } from "react-icons/bi";
 import { SideDrawer } from "@/components/custom/SideDrawer";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 // import { DropdownMenuDemo } from "@/components/custom/CategoryNav/Dropdown";
 
 export function Header() {
@@ -44,6 +45,7 @@ export function Header() {
     localStorage.setItem("UserDetails", JSON.stringify(data));
     reset();
     setOpen(false);
+    toast.success("PROFILE UPDATED SUCCESFULLY");
     {
       location.pathname == "/Buy-now" && navigate(0);
     }
@@ -54,7 +56,7 @@ export function Header() {
     localStorage.removeItem("UserData");
     reset();
     setOpen(false);
-    navigate(0);
+    toast.error("LOGOUT SUCCESFULLY");
   }
 
   return (
@@ -122,14 +124,7 @@ export function Header() {
                     <span>Support</span>
                   </div>
                 </NavLink>
-                <div
-                  onClick={() => {
-                    alert("Are you sure you want to logout?");
-                    localStorage.removeItem("UserData");
-                    navigate(0);
-                  }}
-                  className={iconWrapper}
-                >
+                <div onClick={LogoutHandle} className={iconWrapper}>
                   <LogOut />
                 </div>
               </>

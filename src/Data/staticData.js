@@ -104,7 +104,7 @@ export const Catogories = [
   {
     id: "beauty",
     title: "Personal Care",
-    image: "/images/SkinCare.png",
+    image: "/images/skincare.png",
   },
   {
     id: "Delevery",
