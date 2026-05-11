@@ -11,11 +11,11 @@ import { Star } from "lucide-react";
 import React, { useState } from "react";
 import { CarausolImg } from "./Carausol";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 export function ProductClickPop({ product, open, setOpen }) {
   const [comment, setComment] = useState(false);
   const navigate = useNavigate();
-  // const User = JSON.parse(localStorage.getItem("UserData"));
   const UserData = JSON.parse(localStorage.getItem("UserData") || "null");
   if (!product) return null;
   const {
@@ -40,7 +40,7 @@ export function ProductClickPop({ product, open, setOpen }) {
   function BuyHandle() {
     if (!UserData) {
       setOpen(false);
-      alert("Please login to proceed with buying.");
+      toast.warning("PLEASE LOGIN TO PROCEED WITH BUYING.");
     } else {
       const existingCart = JSON.parse(localStorage.getItem("BuyData")) || [];
       existingCart.push(product);
@@ -52,22 +52,23 @@ export function ProductClickPop({ product, open, setOpen }) {
   function AddToCart() {
     if (!UserData) {
       setOpen(false);
-      alert("Please login to add items to cart.");
+      toast.warning("PLEASE LOGIN TO ADD ITEMS TO CART.");
     } else {
       const existingCart = JSON.parse(localStorage.getItem("MyCart")) || [];
       existingCart.push(product);
       localStorage.setItem("MyCart", JSON.stringify(existingCart));
       setOpen(false);
-
-      // alert("Added Sucessfully !!!!");
+      toast.success("ITEM ADDED TO CART SUCCESSFULLY!");
+      setTimeout(() => {
+        navigate(0);
+      }, 500);
     }
-    navigate(0);
   }
 
   return (
     <>
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="max-w-7xl h-[85vh]  bg-white p-0 shadow-2xl">
+        <DialogContent className="max-w-7xl h-auto  bg-white p-0 shadow-2xl">
           {/* ================= HEADER ================= */}
           <DialogHeader className="border-b p-4">
             <DialogTitle className="text-xl font-semibold">{title}</DialogTitle>
@@ -175,16 +176,16 @@ export function ProductClickPop({ product, open, setOpen }) {
               </div>
 
               {/* ACTION BUTTONS */}
-              <div className="flex gap-4 pt-4">
+              <div className="flex gap-4 pt-4 w-full">
                 <Button
                   onClick={AddToCart}
-                  className="flex-1 bg-yellow-400 text-black transition-all duration-700  hover:bg-white hover:text-yellow-400 hover:border hover:border-yellow-400"
+                  className="w-1/2 bg-yellow-400 text-black transition-all duration-700  hover:bg-white hover:text-yellow-400 hover:border hover:border-yellow-400"
                 >
                   Add to Cart
                 </Button>
                 <Button
                   onClick={BuyHandle}
-                  className="flex-1 bg-orange-500 hover:bg-white hover:text-orange-500 hover:border hover:border-orange-600 transition-all duration-700"
+                  className="w-1/2 bg-orange-500 hover:bg-white hover:text-orange-500 hover:border hover:border-orange-600 transition-all duration-700"
                 >
                   Buy Now
                 </Button>

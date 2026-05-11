@@ -3,14 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { SideDrawer } from "../SideDrawer";
 import { useForm } from "react-hook-form";
 import { UserPen } from "lucide-react";
+import { toast } from "sonner";
 
-export function OrderBill({
-  BuyData,
-
-  totalPrice,
-  totalDiscount,
-  finalAmount,
-}) {
+export function OrderBill({ BuyData, totalPrice, totalDiscount, finalAmount }) {
   const todayDate = new Date().toISOString().slice(0, 10);
   const BuyData_Local = JSON.parse(localStorage.getItem("BuyData")) || [];
   const UserDetails = JSON.parse(localStorage.getItem("UserDetails"));
@@ -36,8 +31,12 @@ export function OrderBill({
 
   function PlaceOrderHandle() {
     if (UserDetails) {
-      navigate("/");
-      console.log("you presssed PlaceOrderHandle<<True>>");
+      toast.success(`${UserDetails.fullName}- Your Order Placed Successfully!`);
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
+
+      // console.log("you presssed PlaceOrderHandle<<True>>");
     } else {
       setPlaceOrder(true);
       console.log("you presssed PlaceOrderHandle<<false>>");
@@ -45,8 +44,8 @@ export function OrderBill({
   }
   return (
     <>
-      <div className="col-span-4">
-        <div className="bg-white border border-gray-300">
+      <div>
+        <div className="bg-white border border-gray-300 h-130 overflow-y-auto no-scrollbar">
           {/* ================= PRICE DETAILS HEADER ================= */}
           <div className="px-5 py-3 border-b border-gray-300 text-sm font-semibold text-gray-900">
             PRICE DETAILS

@@ -18,7 +18,7 @@ export function BuyNow() {
   const totals = BuyData.reduce(
     (acc, item) => {
       const discount = Math.round(
-        Number(item.price) * (Number(item.discountPercentage) / 100)
+        Number(item.price) * (Number(item.discountPercentage) / 100),
       );
 
       const totalPrice = item.price * qty;
@@ -34,7 +34,7 @@ export function BuyNow() {
       totalPrice: 0,
       totalDiscount: 0,
       finalAmount: 0,
-    }
+    },
   );
 
   const CartProduct = (item) => {
@@ -46,20 +46,13 @@ export function BuyNow() {
     localStorage.setItem("BuyData", JSON.stringify(updatedCart));
     navigate(0);
   };
+
   return (
     <div className="bg-[#f1f3f6]">
-      <div
-        className={`mx-auto flex gap-4 justify-center ${
-          BuyData.length >= 2 ? "h-screen items-center" : ""
-        }`}
-      >
-        <div
-          className={`bg-white border border-gray-300 ${
-            BuyData.length >= 2 ? "h-screen overflow-y-auto" : "h-auto"
-          }`}
-        >
+      <div className={`mx-auto flex gap-4 justify-center `}>
+        <div className={`bg-white border border-gray-300 h-130 `}>
           {UserDetails ? (
-            <div className="border-b border-gray-300 p-8 relative">
+            <div className="border-b border-gray-300 p-8">
               <p className="text-xs text-gray-500 uppercase tracking-wide">
                 Deliver to :-
               </p>
@@ -82,36 +75,34 @@ export function BuyNow() {
             </span>
           )}
 
-          {BuyData.length > 0 ? (
-            BuyData.map((item) => (
-              <div key={item.id}>
-                <OrderInfo
-                  BuyData={item}
-                  discount={totals.discount}
-                  qty={qty}
-                  setQty={setQty}
-                  footer={true}
-                  CartProductRemove={CartProduct}
-                />
-              </div>
-            ))
-          ) : (
-            <Link
-              to="/"
-              className="flex gap-2 text-xl font-mono text-center text-blue-500 justify-center items-center py-25"
-            >
-              No Products Yet
-              <span className="text-yellow-600 hover:text-yellow-700">
-                Start shopping now!
-              </span>
-            </Link>
-          )}
+          <div className="overflow-y-auto no-scrollbar h-82.5">
+            {BuyData.length > 0 ? (
+              BuyData.map((item) => (
+                <div key={item.id}>
+                  <OrderInfo
+                    BuyData={item}
+                    discount={totals.discount}
+                    qty={qty}
+                    setQty={setQty}
+                    footer={true}
+                    CartProductRemove={CartProduct}
+                  />
+                </div>
+              ))
+            ) : (
+              <Link
+                to="/"
+                className="flex gap-2 text-xl font-mono text-center text-blue-500 justify-center items-center py-25"
+              >
+                No Products Yet
+                <span className="text-yellow-600 hover:text-yellow-700">
+                  Start shopping now!
+                </span>
+              </Link>
+            )}
+          </div>
         </div>
-        <div
-          className={`${
-            BuyData.length >= 2 ? "h-screen overflow-y-auto" : "h-auto"
-          }`}
-        >
+        <div>
           {BuyData.length > 0 && (
             <OrderBill
               BuyData={BuyData}
@@ -126,4 +117,3 @@ export function BuyNow() {
     </div>
   );
 }
-
