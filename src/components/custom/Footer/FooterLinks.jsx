@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 // import { useNavigate } from "react-router-dom";
 
-export function FooterLinks({ Heading, Link1, Link2, Link3, Link4, Link5 }) {
+export function FooterLinks({ Heading, Links = [] }) {
   // const navigate = useNavigate();
   const linksClassName =
     "cursor-pointer hover:text-blue-500 transition-all duration-700";
@@ -11,11 +12,11 @@ export function FooterLinks({ Heading, Link1, Link2, Link3, Link4, Link5 }) {
         {Heading}
       </h2>
       <ul className="space-y-2 text-md text-gray-200">
-        <li className={linksClassName}>{Link1}</li>
-        <li className={linksClassName}>{Link2}</li>
-        <li className={linksClassName}>{Link3}</li>
-        <li className={linksClassName}>{Link4}</li>
-        <li className={linksClassName}>{Link5}</li>
+        {Links.map((link, index) => (
+          <Link key={index} to={link?.path}>
+            <li className={linksClassName}>{link?.title}</li>
+          </Link>
+        ))}
       </ul>
     </div>
   );

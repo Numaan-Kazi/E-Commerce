@@ -3,32 +3,16 @@ import { BsWhatsapp } from "react-icons/bs";
 import { SiInstagram } from "react-icons/si";
 import { FiTwitter } from "react-icons/fi";
 import { FooterLinks } from "@/components/custom/Footer/FooterLinks";
+import { Link } from "react-router-dom";
+import { About, Connect_with_Us, Help_Center } from "@/Data/staticData";
 
 export function Footer() {
   return (
     <footer className="bg-[#191919] p-10">
       <div className="grid grid-cols-4 px-20">
-        <FooterLinks
-          Heading="About"
-          Link1="Contact us"
-          Link2="About us"
-          Link3="Corporate"
-          Link4="Privacy policy"
-          Link5="Our Services"
-        />
-        <FooterLinks
-          Heading="Help Center"
-          Link1="FAQs"
-          Link2="Support"
-          Link3="Help"
-          Link4="Payment"
-        />
-        <FooterLinks
-          Heading="Connect with Us"
-          Link1="Twitter"
-          Link2="Instagram"
-          Link3="WhatsApp"
-        />
+        <FooterLinks Heading="About" Links={About} />
+        <FooterLinks Heading="Help Center" Links={Help_Center} />
+        <FooterLinks Heading="Connect with Us" Links={Connect_with_Us} />
 
         <div className="border-l border-gray-700 pl-6 space-y-3 text-gray-300 leading-relaxed">
           <p className="text-gray-300 text-lg font-semibold tracking-wide uppercase">
@@ -43,8 +27,8 @@ export function Footer() {
 
           <span className="block">
             CIN : U51109KA2012PTC066107 <br />
-            Telephone: <span className="text-blue-500">91565538381 / 9191919191
-            </span>
+            Telephone:{" "}
+            <span className="text-blue-500">91565538381 / 9191919191</span>
           </span>
         </div>
       </div>
@@ -52,18 +36,24 @@ export function Footer() {
 
       <div className="flex items-center justify-between">
         <span className="flex gap-5 text-white">
-          <BsWhatsapp
-            size={22}
-            className="cursor-pointer hover:text-white transition-colors"
-          />
-          <SiInstagram
-            size={22}
-            className="cursor-pointer hover:text-white transition-colors"
-          />
-          <FiTwitter
-            size={22}
-            className="cursor-pointer hover:text-white transition-colors"
-          />
+          <Link to="https://www.whatsapp.com/" target="_blank">
+            <BsWhatsapp
+              size={22}
+              className="cursor-pointer hover:bg-green-700 hover:rounded-4xl transition-colors"
+            />
+          </Link>
+          <Link to="https://www.instagram.com/nk.__014" target="_blank">
+            <SiInstagram
+              size={22}
+              className="cursor-pointer  transition-colors hover:bg-pink-500"
+            />
+          </Link>
+          <Link to="https://www.twitter.com/" target="_blank">
+            <FiTwitter
+              size={22}
+              className="cursor-pointer hover:bg-blue-500  transition-colors"
+            />
+          </Link>
         </span>
         <p className="text-white text-sm font-medium">
           © 2025 Your Company. All rights reserved.

@@ -43,6 +43,7 @@ export const images = [
   "Branding-8.png",
   "Branding-9.png",
 ];
+
 export const Pay_Images = ["Ppay.png", "Gpay.png", "Ptm.png"];
 
 export const CATEGORY_GROUPS = {
@@ -110,5 +111,75 @@ export const Catogories = [
     id: "Delevery",
     title: "Our Services",
     image: "/images/ShopMe.png",
+  },
+];
+
+// ---Footer Links Data----
+export const About = [
+  {
+    id: 1,
+    title: "Contact us",
+    path: "/",
+  },
+  {
+    id: 2,
+    title: "About us",
+    path: "/",
+  },
+  {
+    id: 3,
+    title: "Corporate",
+    path: "/",
+  },
+  {
+    id: 4,
+    title: "Privacy policy",
+    path: "/Privacy-policy",
+  },
+  {
+    id: 5,
+    title: "Our Services",
+    path: "/Services",
+  },
+];
+
+export const Help_Center = [
+  {
+    id: 1,
+    title: "FAQs",
+    path: "/help/faq",
+  },
+  {
+    id: 2,
+    title: "Support",
+    path: "/Support",
+  },
+  {
+    id: 3,
+    title: "Help",
+    path: "/Support",
+  },
+  {
+    id: 4,
+    title: "Payment",
+    path: "/help/payment",
+  },
+];
+
+export const Connect_with_Us = [
+  {
+    id: 5,
+    title: "WhatsApp",
+    path: "https://www.whatsapp.com//",
+  },
+  {
+    id: 6,
+    title: "Instagram",
+    path: "https://www.instagram.com/nk.__014",
+  },
+  {
+    id: 7,
+    title: "Twitter",
+    path: "https://www.twitter.com/",
   },
 ];
