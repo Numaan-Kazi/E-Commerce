@@ -49,3 +49,5 @@ Use Cases :
 Product browsing & shopping experience.
 Authentication-based user access.
 Frontend architecture and API integration practice.
+
+Note : E-Commerce-Work Repo Has all recent changes , and this website is just for educational purpose only dont mis-used it.
