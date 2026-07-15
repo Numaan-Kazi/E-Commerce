@@ -43,7 +43,6 @@ export const images = [
   "Branding-8.png",
   "Branding-9.png",
 ];
-
 export const Pay_Images = ["Ppay.png", "Gpay.png", "Ptm.png"];
 
 export const CATEGORY_GROUPS = {
