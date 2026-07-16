@@ -5,7 +5,6 @@ import { getProductsByCategory } from "@/API/ProductsAPi";
 import { useQuery } from "@tanstack/react-query";
 import { RiLoader4Line } from "react-icons/ri";
 import { DealsSection } from "@/components/custom/Deals/DealsSection";
-// import { ProductClickPop } from "@/components/custom/ProductClickPop";
 import { images } from "@/Data/staticData";
 
 export function Home() {

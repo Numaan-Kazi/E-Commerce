@@ -4,6 +4,7 @@ import { SideDrawer } from "../SideDrawer";
 import { useForm } from "react-hook-form";
 import { UserPen } from "lucide-react";
 import { toast } from "sonner";
+import { sendOrderEmail } from "@/lib/email";
 
 export function OrderBill({ BuyData, totalPrice, totalDiscount, finalAmount }) {
   const todayDate = new Date().toISOString().slice(0, 10);
@@ -11,6 +12,8 @@ export function OrderBill({ BuyData, totalPrice, totalDiscount, finalAmount }) {
   const UserDetails = JSON.parse(localStorage.getItem("UserDetails"));
   const [PlaceOrder, setPlaceOrder] = useState(false);
   const navigate = useNavigate();
+
+  console.log(BuyData_Local, "BuyData_Local");
 
   const {
     register,
@@ -29,17 +32,24 @@ export function OrderBill({ BuyData, totalPrice, totalDiscount, finalAmount }) {
     }
   };
 
-  function PlaceOrderHandle() {
+  async function PlaceOrderHandle() {
     if (UserDetails) {
       toast.success(`${UserDetails.fullName}- Your Order Placed Successfully!`);
+
+      await sendOrderEmail({
+        ownerName: "Numaan Kazi",
+        customerName: UserDetails.fullName,
+        productName:
+          BuyData_Local?.length > 1
+            ? BuyData_Local.map((item) => item.title).join(", ")
+            : BuyData_Local?.[0]?.title,
+      });
+
       setTimeout(() => {
         navigate("/");
       }, 2000);
-
-      // console.log("you presssed PlaceOrderHandle<<True>>");
     } else {
       setPlaceOrder(true);
-      console.log("you presssed PlaceOrderHandle<<false>>");
     }
   }
   return (
@@ -134,6 +144,7 @@ export function OrderBill({ BuyData, totalPrice, totalDiscount, finalAmount }) {
           </div>
         </div>
       </div>
+
       <SideDrawer
         open={PlaceOrder}
         OpenHandle={setPlaceOrder}
