@@ -57,6 +57,7 @@ export function Header() {
     reset();
     setOpen(false);
     toast.error("LOGOUT SUCCESFULLY");
+    navigate("/")
   }
 
   return (
