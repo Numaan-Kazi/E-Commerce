@@ -13,8 +13,6 @@ export function OrderBill({ BuyData, totalPrice, totalDiscount, finalAmount }) {
   const [PlaceOrder, setPlaceOrder] = useState(false);
   const navigate = useNavigate();
 
-  console.log(BuyData_Local, "BuyData_Local");
-
   const {
     register,
     handleSubmit,
@@ -50,6 +48,8 @@ export function OrderBill({ BuyData, totalPrice, totalDiscount, finalAmount }) {
       }, 2000);
     } else {
       setPlaceOrder(true);
+
+      toast.warning("Please Create Your Profile to Placed Order");
     }
   }
   return (
