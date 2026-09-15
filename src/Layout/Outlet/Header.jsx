@@ -21,6 +21,7 @@ import { BiLogIn } from "react-icons/bi";
 import { SideDrawer } from "@/components/custom/SideDrawer";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { DropdownMenuAvatar } from "./components/Profile_menu";
 // import { DropdownMenuDemo } from "@/components/custom/CategoryNav/Dropdown";
 
 export function Header() {
@@ -57,7 +58,7 @@ export function Header() {
     reset();
     setOpen(false);
     toast.error("LOGOUT SUCCESFULLY");
-    navigate("/")
+    navigate("/");
   }
 
   return (
@@ -85,26 +86,10 @@ export function Header() {
             />
             <Search className="text-blue-600" size={18} />
           </div>
+
           {/* Right Icons */}
           <div className="flex items-center gap-8">
             {User ? (
-              <button onClick={() => setOpen(true)}>
-                <div className={iconWrapper}>
-                  <CircleUserRound strokeWidth={2} size={22} />
-                  <span>Profile</span>
-                </div>
-              </button>
-            ) : (
-              <button onClick={() => setLoginPop(true)}>
-                <div
-                  className={`${iconWrapper} bg-blue-400 text-black p-2 rounded`}
-                >
-                  <BiLogIn />
-                  <span>Login</span>
-                </div>
-              </button>
-            )}
-            {User && (
               <>
                 <NavLink to="/Add-to-cart">
                   <div
@@ -125,11 +110,22 @@ export function Header() {
                     <span>Support</span>
                   </div>
                 </NavLink>
-                <div onClick={LogoutHandle} className={iconWrapper}>
-                  <LogOut />
-                </div>
+                <DropdownMenuAvatar
+                  LogoutHandle={LogoutHandle}
+                  IsProfile={() => setOpen(true)}
+                />
               </>
+            ) : (
+              <button onClick={() => setLoginPop(true)}>
+                <div
+                  className={`${iconWrapper} bg-blue-400 text-black p-2 rounded`}
+                >
+                  <BiLogIn />
+                  <span>Login</span>
+                </div>
+              </button>
             )}
+            {/* {User && <></>} */}
           </div>
         </div>
       </header>
@@ -376,4 +372,13 @@ export function Header() {
       </SideDrawer>
     </>
   );
+}
+
+{
+  /* <button onClick={() => setOpen(true)}>
+                <div className={iconWrapper}>
+                  <CircleUserRound strokeWidth={2} size={22} />
+                  <span>Profile</span>
+                </div>
+              </button> */
 }

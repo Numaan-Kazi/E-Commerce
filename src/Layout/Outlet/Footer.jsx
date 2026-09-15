@@ -36,12 +36,22 @@ export function Footer() {
 
       <div className="flex items-center justify-between">
         <span className="flex gap-5 text-white">
-          <Link to="https://www.whatsapp.com/" target="_blank">
+          {/* <Link to="https://www.whatsapp.com/" target="_blank">
             <BsWhatsapp
               size={22}
               className="cursor-pointer hover:bg-green-700 hover:rounded-4xl transition-colors"
             />
-          </Link>
+          </Link> */}
+          <a
+            href="https://wa.me/919156538381"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <BsWhatsapp
+              size={22}
+              className="cursor-pointer hover:bg-green-700 hover:rounded-4xl transition-colors"
+            />
+          </a>
           <Link to="https://www.instagram.com/nk.__014" target="_blank">
             <SiInstagram
               size={22}

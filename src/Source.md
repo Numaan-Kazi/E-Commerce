@@ -189,3 +189,78 @@ export function Home() {
   );
 }
 ---------------------------------------------------------
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                {/* <div className="flex justify-evenly items-center">
+                  <input
+                    {...register("username", { required: true })}
+                    placeholder="Email"
+                    className="border-b border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-b-2 focus:ring-blue-500 focus:border-blue-500"
+                  />
+                  {errors.username && (
+                    <span className="flex flex-col text-red-500 text-sm mt-1">
+                      This field is required
+                    </span>
+                  )}
+                  <span>Or</span>
+                  <input
+                    {...register("mobile", { required: true })}
+                    placeholder="Mobile number"
+                    className="border-b border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-b-2 focus:ring-blue-500 focus:border-blue-500"
+                  />
+                  {errors.mobile && (
+                    <span className="flex flex-col text-red-500 text-sm mt-1">
+                      This field is required
+                    </span>
+                  )}
+                </div> */}
+
+                <div className="flex items-center justify-evenly gap-4">
+                  {/* <div className="flex flex-col">
+                    <input
+                      {...register("username", { required: true })}
+                      placeholder="Email"
+                      className="border-b border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-b-2 focus:ring-blue-500 focus:border-blue-500"
+                    />
+
+                    {errors.username && (
+                      <span className="text-red-500 text-sm">
+                        {errors.username.message}
+                      </span>
+                    )}
+                  </div> */}
+
+                  <div className="flex flex-col">
+                    <input
+                      {...register("username")}
+                      placeholder="Email"
+                      className="border-b border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-b-2 focus:ring-blue-500 focus:border-blue-500"
+                    />
+
+                    {errors.username && (
+                      <span className="text-red-500 text-sm">
+                        {errors.username.message}
+                      </span>
+                    )}
+                  </div>
+                  {/* {errors.username && (
+                      <span className="text-red-500 text-sm mt-1">
+                        This field is required
+                      </span>
+                    )} */}
+
+                  <span className="text-sm text-gray-500">Or</span>
+
+                  <input
+                    {...register("mobile", { required: true })}
+                    placeholder="Mobile number"
+                    className="border-b border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-b-2 focus:ring-blue-500 focus:border-blue-500"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-blue-600 text-white py-2 my-4 rounded hover:bg-blue-700 transition duration-200"
+                >
+                  Continue
+                </button>
+              </form>

@@ -13,33 +13,24 @@ export function LoginPage({ open, setOPen }) {
     register,
     handleSubmit,
     reset,
+    setError,
     formState: { errors },
   } = useForm();
 
-  // const {
-  //   register: profileRegister,
-  //   handleSubmit: profileHandleSubmit,
-  //   reset: profileReset,
-  //   formState: { errors: profileErrors },
-  // } = useForm();
-
   const onSubmit = (data) => {
+    if (!data.username && !data.mobile) {
+      setError("username", {
+        type: "manual",
+        message: "Please enter Email or Mobile number",
+      });
+      return;
+    }
     console.log(data);
     setOPen(false);
     reset();
     localStorage.setItem("UserData", JSON.stringify(data));
     toast.success("LOGIN SUCCESFULLY");
   };
-
-  // const SideDrawerHandle = (data) => {
-  //   console.log("UserData", data);
-  //   localStorage.setItem("UserDetails", JSON.stringify(data));
-  //   profileReset();
-  //   setProfileOpen(false);
-  //   {
-  //     location.pathname == "/Buy-now" && navigate(0);
-  //   }
-  // };
 
   return (
     <>
@@ -77,18 +68,27 @@ export function LoginPage({ open, setOPen }) {
               </h1>
 
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-                <div className="flex flex-col">
+                <div className="flex items-start justify-evenly gap-4">
                   <input
-                    {...register("username", { required: true })}
-                    placeholder="Mobile number or Email"
+                    {...register("username")}
+                    placeholder="Email"
                     className="border-b border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-b-2 focus:ring-blue-500 focus:border-blue-500"
                   />
-                  {errors.username && (
-                    <span className="text-red-500 text-sm mt-1">
-                      This field is required
-                    </span>
-                  )}
+
+                  <span className="mt-2 text-sm text-gray-500">Or</span>
+
+                  <input
+                    {...register("mobile")}
+                    placeholder="Mobile number"
+                    className="border-b border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-b-2 focus:ring-blue-500 focus:border-blue-500"
+                  />
                 </div>
+
+                {errors.username && (
+                  <span className="block text-center text-sm text-red-500">
+                    {errors.username.message}
+                  </span>
+                )}
 
                 <button
                   type="submit"

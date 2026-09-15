@@ -42,7 +42,11 @@ export const images = [
   "Branding-7.png",
   "Branding-8.png",
   "Branding-9.png",
+  // "Etsy -Shop-1.png",
+  // "Etsy -Shop-2.png",
+  // "Etsy -Shop-3.png",
 ];
+
 export const Pay_Images = ["Ppay.png", "Gpay.png", "Ptm.png"];
 
 export const CATEGORY_GROUPS = {

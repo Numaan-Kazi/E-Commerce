@@ -7,7 +7,7 @@ export function Cart() {
   const UserDetails = JSON.parse(localStorage.getItem("UserDetails"));
   const MyCart = JSON.parse(localStorage.getItem("MyCart") || "[]");
   const [qty, setQty] = useState(1);
-  const isScrollable = MyCart.length > 1;
+  // const isScrollable = MyCart.length > 1;
 
   const CartProductRemove = (item) => {
     console.log("<<<Cart Product Clicked>>>", item?.title);
@@ -46,13 +46,17 @@ export function Cart() {
   return (
     <div>
       <div className="bg-white w-full">
-        <div
+        {/* <div
           className={`px-[20%] border border-gray-300
             ${isScrollable ? "h-auto" : "h-[50vh] overflow-hidden"}
           `}
+        > */}
+        <div
+          className={`px-[20%] border border-gray-300 h-[50vh] overflow-auto no-scrollbar
+          `}
         >
           {UserDetails ? (
-            <div className="border-b border-gray-300 p-5 bg-white ">
+            <div className="border-b border-gray-300 p-5 bg-white sticky top-0 ">
               <p className=" text-xs text-gray-500 tracking-wide">
                 Deliver to :-
               </p>
@@ -69,7 +73,7 @@ export function Cart() {
               </p>
             </div>
           ) : (
-            <span className="text-sm text-gray-600 leading-relaxed p-5 block border-b border-gray-300">
+            <span className="text-sm text-gray-600 leading-relaxed p-5 block border-b border-gray-300 sticky top-0 bg-white">
               Add your delivery details to help us deliver your orders quickly
               and accurately.
             </span>
@@ -78,7 +82,7 @@ export function Cart() {
           {MyCart.length > 0 ? (
             MyCart.map((item) => {
               const discount = Math.round(
-                Number(item.price) * (Number(item.discountPercentage) / 100)
+                Number(item.price) * (Number(item.discountPercentage) / 100),
               );
 
               return (

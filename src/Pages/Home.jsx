@@ -7,8 +7,10 @@ import { RiLoader4Line } from "react-icons/ri";
 import { DealsSection } from "@/components/custom/Deals/DealsSection";
 import { images } from "@/Data/staticData";
 
+
 export function Home() {
   const navigate = useNavigate();
+
 
   const handleCategoryClick = (item) => {
     console.log(item?.title);
@@ -28,6 +30,10 @@ export function Home() {
     select: (data) => data?.products,
   });
 
+
+
+
+
   if (isLoading)
     return (
       <div className="flex justify-center min-h-screen items-center text-center animate-spin text-7xl font-normal">
@@ -36,7 +42,7 @@ export function Home() {
     );
 
   return (
-    <div className="flex flex-col gap-10">
+    <div className="w-full flex flex-col gap-10">
       <CategoryNavbar
         navigate={navigate}
         handleCategoryClick={handleCategoryClick}
@@ -44,6 +50,8 @@ export function Home() {
       />
       <CarausolImg images={images} />
       <DealsSection data={data} />
+
+    
     </div>
   );
 }
